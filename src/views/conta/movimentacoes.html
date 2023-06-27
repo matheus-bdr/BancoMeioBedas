@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <title>Movimentacoes</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <style type="text/css">
+    .cor1bg {
+      background-color: #2D3B40;
+    }
+
+    .cor2bg {
+      background-color: #197327;
+    }
+
+    .cor3bg {
+      background-color: #1C8C2D;
+    }
+
+    .cor4bg {
+      background-color: #B9D9C0;
+    }
+
+    .cor1txt {
+      color: #2D3B40;
+    }
+
+    .cor2txt {
+      color: #197327;
+    }
+
+    .cor3txt {
+      color: #1C8C2D;
+    }
+
+    .cor4txt {
+      color: #B9D9C0;
+    }
+
+    .formsCor {
+      border: 2px solid #197327;
+      box-shadow: 4px 4px 0 #197327;
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      width: 100%;
+
+
+    }
+
+    .buttonCor {
+      border: 2px solid #197327;
+      box-shadow: 4px 4px 0 #197327;
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      background: #B9D9C0;
+      color: #197327;
+
+    }
+
+    body {
+      background: linear-gradient(90deg, #fcfcfc 0%, #B9D9C0 100%);
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg cor1bg">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#"> <strong>Bank Middle Bedas</strong></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="#"> <strong>Home</strong></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#"><strong>Features</strong> </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#"><strong>Pricing</strong> </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white cor1bg" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <strong>Dropdown link</strong>
+              </a>
+              <ul class="dropdown-menu cor2bg">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container-fluid ">
+
+      <div class="row justify-content-around mt-5">
+        <div class="col-4 ml-1">
+          <h1 class="text-uppercase">Saldo e movimentações</h1>
+          <p>Veja aqui seu Saldo, faça suas transferenças e receba dinheiro</p>
+        </div>
+        <div class="col-4">
+          <h1>Saldo:</h1>
+          <h3 class="cor3txt">R${{saldo}}</h3>
+        </div>
+      </div>
+      <form method="post" action="/conta/movimentacoes">
+        <div class="row justify-content-around m-5 text-dark">
+          <div class="col-6 ">
+            <div>
+              <label class="form-label " for="nome">Nome da sua conta</label>
+              <input class="form-control formsCor " type="text" id="nome" name="nome">
+            </div>
+            <div>
+              <label class="form-label " for="valor">Valor</label>
+              <input class="form-control formsCor " type="number" id="valor" name="valor">
+            </div>
+
+            <div>
+              <label class="form-label" for="dataTranferencia">Data de transferencia</label>
+              <input class="form-control formsCor cor3txt" type="date" id="dataTranferencia" name="dataTranferencia">
+            </div>
+          </div>
+
+          <div class="col-6">
+            <label for="operacao"> selecione sua operação</label>
+            <select id="operacao" class="form-control formsCor" name="operacao" style="width: 150px;">
+              <option value="Transferir">Transferir</option>
+              <option value="Investir">Investir</option>
+              <option value="Depositar">Depositar</option>
+
+            </select>
+            <div>
+              <label class="form-label " for="destinatarioTransferencia">destinatário</label>
+              <input class="form-control formsCor " type="text" id="destinatarioTransferencia"
+                name="destinatarioTransferencia">
+            </div>
+            <div>
+              <label class="form-label " for="senha">senha</label>
+              <input class="form-control formsCor " type="password" id="senha"
+                name="senha">
+            </div>
+          </div>
+        </div>
+        <div class="d-grid m-5">
+          <button type="submit" class="btn buttonCor btn-block "><strong>Enviar</strong></button>
+        </div>
+      </form>
+    </div>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

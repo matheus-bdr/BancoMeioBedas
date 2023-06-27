@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Ver Conta</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <style type="text/css">
+        .cor1bg {
+            background-color: #2D3B40;
+        }
+
+        .cor2bg {
+            background-color: #197327;
+        }
+
+        .cor3bg {
+            background-color: #1C8C2D;
+        }
+
+        .cor4bg {
+            background-color: #B9D9C0;
+        }
+
+        .cor1txt {
+            color: #2D3B40;
+        }
+
+        .cor2txt {
+            color: #197327;
+        }
+
+        .cor3txt {
+            color: #1C8C2D;
+        }
+
+        .cor4txt {
+            color: #B9D9C0;
+        }
+
+        .formsCor {
+            border: 2px solid #197327;
+            box-shadow: 4px 4px 0 #197327;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            width: 100%;
+
+
+        }
+
+        .buttonCor {
+            border: 2px solid #197327;
+            box-shadow: 4px 4px 0 #197327;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            background: #B9D9C0;
+            color: #197327;
+
+        }
+
+        body {
+            background: linear-gradient(90deg, #fcfcfc 0%, #B9D9C0 100%);
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg cor1bg">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" href="#"> <strong>Bank Middle Bedas</strong></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="#">
+                                <strong>Home</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#"><strong>Features</strong> </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#"><strong>Pricing</strong> </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white cor1bg" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <strong>Dropdown link</strong>
+                            </a>
+                            <ul class="dropdown-menu cor2bg">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class=" container-fluid p-5">
+            
+            <h1>Olá, <span class="cor2txt">{{nome}}</span>!</h1>
+            
+            <h6>Veja aqui o seu cadastro</h6>
+        </div>
+        <div class="p-3">
+           
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">nome</th>
+                    <th scope="col">donoDaConta</th>
+                    <th scope="col">data</th>
+                    <th scope="col">saldo</th>
+                    <th scope="col">tipoDeConta</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {{#contas}}
+                  <tr>                   
+                    <td><a href="/conta/editar/{{idUnico}}">{{nome}}</a></td>
+                    <td>{{dono}}</td>
+                    <td>{{criacao}}</td>
+                    <td><a href="/conta/movimentacoes/{{idUnico}}">{{saldo}}</a></td>
+                    <td>{{contatype}}</td>
+                  </tr>
+                  {{/contas}}
+                </tbody>
+              </table>
+    </main>
+    <footer>
+        <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>
