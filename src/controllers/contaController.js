@@ -21,6 +21,7 @@ function criarConta(req, res) {
 
     Conta.create(conta).then((result) => {
         res.render("../views/conta/criar.html", { conta });
+
     }).catch((err) => {
         console.log(err)
         let erro = err
@@ -31,6 +32,7 @@ function criarConta(req, res) {
 function listarContaView(req, res) {
     Conta.findAll().then((contas) => {
         res.render("../views/conta/ver.html", { contas });
+
     }).catch((err) => {
         console.log(err)
         let erro = err
@@ -47,7 +49,7 @@ function editarContaView(req, res) {
 }
 function editarConta(req, res) {
     let conta = {
-    
+
         nome: req.body.nome,
         dono: req.body.nomeDonoConta,
         criacao: req.body.dataDeCriacao,
@@ -83,46 +85,15 @@ function movimentaContaView(req, res) {
 
 function movimentaConta(req, res) {
     let conta = {
-
         nome: req.body.nome,
         valor: req.body.valor,
         operacao: req.body.operacao,
         destinatarioTransferencia: req.body.destinatarioTransferencia,
         senha: req.body.senha
     }
-    const contaPrimaria = Conta.findByPk(idUnico);
-    idUnico = contaPrimaria.idUnico
-    saldo = contaPrimaria.saldo
-    nomePrimaria = contaPrimaria.nome
-    senhaPrimaria = contaPrimaria.senha
-    if (nomePrimaria==nome && senhaPrimaria == senha) {
-        if (operacao = 'Transferir') {
 
-            if (valor > 0 && valor <= saldo) {
-                saldo = saldo - valor;
-                return saldo
-            }
-
-        }
-        else if (operacao = 'Depositar') {
-
-            if (valor > 0 && valor <= saldo) {
-                saldo = saldo - valor;
-                return saldo
-
-            }
-        }
-        else if (operacao = 'Investir') {
-
-            if (valor > 0 && valor <= saldo) {
-                saldo = saldo - valor;
-                return saldo
-            }
-
-        }
-    }
     Conta.update(
-        conta, 
+        conta,
         {
             where: {
                 idUnico: req.body.idUnico,
@@ -138,19 +109,19 @@ function movimentaConta(req, res) {
 
 }
 function excluirConta(req, res) {
-   
+
     Conta.destroy(
-      {
-        where: {
-          idUnico: req.body.idUnico,
-        },
-      }
+        {
+            where: {
+                idUnico: req.body.idUnico,
+            },
+        }
     ).then(function (sucesso) {
         res.redirect("/conta/listar?sucesso_excluir=1");
     })
-    .catch(function (erro) {
-        res.redirect("/conta/listar?erro_excluir=1")
-    });
+        .catch(function (erro) {
+            res.redirect("/conta/listar?erro_excluir=1")
+        });
 
 }
 
