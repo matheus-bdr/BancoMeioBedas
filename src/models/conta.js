@@ -34,6 +34,18 @@ const Conta = database.define('conta', {
         type: Sequelize.STRING,
         allowNull: false
     },
+/*     operacao:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    destinatarioTransferencia:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    valor:{
+        type: Sequelize.FLOAT,
+        allowNull: true
+    }, */
 });
  
 module.exports = Conta;

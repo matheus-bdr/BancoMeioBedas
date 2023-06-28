@@ -77,38 +77,52 @@
   <header>
     <nav class="navbar navbar-expand-lg cor1bg">
       <div class="container-fluid">
-        <a class="navbar-brand text-white" href="#"> <strong>Bank Middle Bedas</strong></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active text-white" aria-current="page" href="#"> <strong>Home</strong></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#"><strong>Features</strong> </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#"><strong>Pricing</strong> </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white cor1bg" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <strong>Dropdown link</strong>
-              </a>
-              <ul class="dropdown-menu cor2bg">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <a class="navbar-brand text-white" href="../index"> <strong>Bank Middle Bedas</strong></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                  <li class="nav-item">
+                      <a class="nav-link active text-white" aria-current="page" href="../index"> <strong>Home</strong></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link text-white" href="../conta/criar"><strong>Criar conta</strong> </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link text-white" href="../conta/listar"><strong>Veja suas contas</strong> </a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle text-white cor1bg" href="#" role="button" data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                          <strong>Mais</strong>
+                      </a>
+                      <ul class="dropdown-menu cor2bg">
+                          <li><a class="dropdown-item" href="../login.html">Loggin</a></li>
+                          <li><a class="dropdown-item" href="#">Transferir</a></li>
+                          <li><a class="dropdown-item" href="../conta/listar">Ver conta</a></li>
+                      </ul>
+                  </li>
               </ul>
-            </li>
-          </ul>
-        </div>
+          </div>
       </div>
-    </nav>
+  </nav>
   </header>
+  {{#conta}}
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>{{conta.result}}</strong> movimentação feita com sucesso!
+            </div>
+        {{/conta}}
+
+        {{#erro}}
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>{{erro}}</strong> não fazer a movimentação
+            </div>
+        {{/erro}}
   <main>
     <div class="container-fluid ">
 
@@ -134,11 +148,7 @@
               <input class="form-control formsCor " type="number" id="valor" name="valor">
             </div>
 
-            <div>
-              <label class="form-label" for="dataTranferencia">Data de transferencia</label>
-              <input class="form-control formsCor cor3txt" type="date" id="dataTranferencia" name="dataTranferencia">
-            </div>
-          </div>
+         
 
           <div class="col-6">
             <label for="operacao"> selecione sua operação</label>

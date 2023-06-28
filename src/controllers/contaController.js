@@ -47,6 +47,7 @@ function editarContaView(req, res) {
 }
 function editarConta(req, res) {
     let conta = {
+        idUnico: req.body.idUnico,
         nome: req.body.nome,
         dono: req.body.nomeDonoConta,
         criacao: req.body.dataDeCriacao,
@@ -73,48 +74,71 @@ function editarConta(req, res) {
 
 
 function movimentaContaView(req, res) {
-            let idUnico = req.params.idUnico
-            let conta;
-            Conta.findByPk(idUnico).then(function (conta) {
-                res.render("../views/conta/movimentacoes.html", { conta });
-            })
-        }
+    let idUnico = req.params.idUnico
+    let conta;
+    Conta.findByPk(idUnico).then(function (conta) {
+        res.render("../views/conta/movimentacoes.html", { conta });
+    })
+}
 
- function movimentaConta(req, res) {
+function movimentaConta(req, res) {
     let conta = {
-        idUnico:req.body.idUnico,
+
         nome: req.body.nome,
         valor: req.body.valor,
-        dataTranferencia: req.body.dataTranferencia,
         operacao: req.body.operacao,
         destinatarioTransferencia: req.body.destinatarioTransferencia,
         senha: req.body.senha
     }
-    
+    const contaPrimaria = Conta.findByPk(idUnico);
     let idUnico = req.params.idUnico
-    Conta.findByPk(idUnico).then( function (conta1) {
-        const contaPrimaria =  Conta.findByPk(idUnico);
-        if (contaPrimaria.saldo < conta.valor && conta.valor > 0) {
-            contaPrimaria.saldo = contaPrimaria.saldo - valor;
+    saldo = contaPrimaria.saldo
+    nomePrimaria = contaPrimaria.nome
+    senhaPrimaria = contaPrimaria.senha
+    if (nomePrimaria==nome && senhaPrimaria == senha) {
+        if (operacao = 'Transferir') {
 
-            Conta.update(
-                conta,contaPrimaria,
-                {
-                    where: {
-                        idUnico: req.body.idUnico,
-                    },
-                }
-            ).then(function (sucesso) {
-                res.render("../views/conta/movimentacoes.html", { conta, sucesso });
-            })
-                .catch(function (erro) {
-                    res.render("../views/conta/movimentacoes.html", { conta, erro })
-                });
+            if (valor > 0 && valor <= saldo) {
+                saldo = saldo - valor;
+                return saldo
+            }
 
         }
+        else if (operacao = 'Depositar') {
+
+            if (valor > 0 && valor <= saldo) {
+                saldo = saldo - valor;
+                return saldo
+
+            }
+        }
+        else if (operacao = 'Investir') {
+
+            if (valor > 0 && valor <= saldo) {
+                saldo = saldo - valor;
+                return saldo
+            }
+
+        }
+    }
+    Conta.update(
+        conta, 
+        {
+            where: {
+                idUnico: req.body.idUnico,
+            },
+        }
+    ).then(function (sucesso) {
+        res.render("../views/conta/movimentacoes.html", { conta, sucesso });
     })
-    
+        .catch(function (erro) {
+            res.render("../views/conta/movimentacoes.html", { conta, erro })
+        });
+
+
 }
+
+
 
 module.exports = {
     criarContaView,
