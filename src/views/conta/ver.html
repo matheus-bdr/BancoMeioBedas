@@ -113,8 +113,28 @@
       </header>
     <main>
         <div class=" container-fluid p-5">
-            
-            <h1>Olá, <span class="cor2txt">{{nome}}</span>!</h1>
+            {{#erro}}
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>{{erro}}</strong> não foi possível concluir o lista de cadastros.
+        </div>
+        {{/erro}}
+
+        {{#erro_excluir}}
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            Não foi possível excluir o cadastro.
+        </div>
+        {{/erro_excluir}}
+
+        {{#sucesso_excluir}}
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            Cadastro excluído com sucesso.
+        </div>
+        {{/sucesso_excluir}}
+
+            <h1>Olá, <span class="cor2txt">{{}}</span>!</h1>
             
             <h6>Veja aqui o seu cadastro</h6>
         </div>
@@ -138,6 +158,44 @@
                     <td>{{criacao}}</td>
                     <td><a href="/conta/movimentacoes/{{idUnico}}">{{saldo}}</a></td>
                     <td>{{contatype}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#myModal-{{idUnico}}">
+                                    Excluir
+                                </button>
+                                <div class="modal" id="myModal-{{idUnico}}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">{{nome}} </h4>
+                                                <button type="button" class="btn-close"
+                                                    data-bs-dismiss="modal"></button>
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                Confirma a exclusão do cadastro?
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary"
+                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                    <form action="/conta/excluir" method="post">
+                                                        <input type="hidden" value="{{idUnico}}" id="idUnico" name="idUnico">
+                                                        <button type="submit" class="btn btn-danger">Confirmar</button>
+                                                    </form>
+                                                    
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                    </td>
                   </tr>
                   {{/contas}}
                 </tbody>

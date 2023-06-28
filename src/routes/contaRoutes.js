@@ -2,16 +2,18 @@ const express = require('express');
 const router = express.Router();
 
 const contaController = require('../controllers/contaController');
+const autenticacaoController = require('../controllers/autenticacaoController');
 
-router.get('/conta/criar', contaController.criarContaView);
-router.post('/conta/criar', contaController.criarConta);
+router.get('/conta/criar', autenticacaoController.verificarAutenticacao, contaController.criarContaView);
+router.post('/conta/criar', autenticacaoController.verificarAutenticacao, contaController.criarConta);
 
-router.get('/conta/listar', contaController.listarContaView);
+router.get('/conta/listar', autenticacaoController.verificarAutenticacao, contaController.listarContaView);
 
-router.get('/conta/editar/:id', contaController.editarContaView);
-router.post('/conta/editar', contaController.editarConta);
+router.get('/conta/editar/:id', autenticacaoController.verificarAutenticacao, contaController.editarContaView);
+router.post('/conta/editar', autenticacaoController.verificarAutenticacao, contaController.editarConta);
 
-router.get('/conta/movimentacoes/:id', contaController.movimentaContaView);
-router.post('/conta/movimentacoes', contaController.movimentaConta);
+router.get('/conta/movimentacoes/:id', autenticacaoController.verificarAutenticacao,  contaController.movimentaContaView);
+router.post('/conta/movimentacoes', autenticacaoController.verificarAutenticacao, contaController.movimentaConta);
 
+router.post('/conta/excluir', autenticacaoController.verificarAutenticacao, contaController.excluirConta);
 module.exports = router;

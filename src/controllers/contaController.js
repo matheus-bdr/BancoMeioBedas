@@ -47,7 +47,7 @@ function editarContaView(req, res) {
 }
 function editarConta(req, res) {
     let conta = {
-        idUnico: req.body.idUnico,
+    
         nome: req.body.nome,
         dono: req.body.nomeDonoConta,
         criacao: req.body.dataDeCriacao,
@@ -91,7 +91,7 @@ function movimentaConta(req, res) {
         senha: req.body.senha
     }
     const contaPrimaria = Conta.findByPk(idUnico);
-    let idUnico = req.params.idUnico
+    idUnico = contaPrimaria.idUnico
     saldo = contaPrimaria.saldo
     nomePrimaria = contaPrimaria.nome
     senhaPrimaria = contaPrimaria.senha
@@ -137,6 +137,22 @@ function movimentaConta(req, res) {
 
 
 }
+function excluirConta(req, res) {
+   
+    Conta.destroy(
+      {
+        where: {
+          idUnico: req.body.idUnico,
+        },
+      }
+    ).then(function (sucesso) {
+        res.redirect("/conta/listar?sucesso_excluir=1");
+    })
+    .catch(function (erro) {
+        res.redirect("/conta/listar?erro_excluir=1")
+    });
+
+}
 
 
 
@@ -148,5 +164,6 @@ module.exports = {
     listarContaView,
     editarContaView,
     editarConta,
+    excluirConta,
 
 };
