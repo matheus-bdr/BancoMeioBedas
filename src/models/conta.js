@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const database = require('../db');
- 
+
 const Conta = database.define('conta', {
     idUnico: {
         type: Sequelize.INTEGER,
@@ -34,18 +34,7 @@ const Conta = database.define('conta', {
         type: Sequelize.STRING,
         
     },
-/*     operacao:{
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    destinatarioTransferencia:{
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    valor:{
-        type: Sequelize.FLOAT,
-        allowNull: true
-    }, */
+
 });
  
 module.exports = Conta;
