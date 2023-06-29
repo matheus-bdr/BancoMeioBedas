@@ -76,6 +76,7 @@ function editarConta(req, res) {
 
 
 function movimentaContaView(req, res) {
+
     let idUnico = req.params.idUnico
     let conta;
     Conta.findByPk(idUnico).then(function (conta) {
@@ -83,11 +84,17 @@ function movimentaContaView(req, res) {
     })
 }
 
-function movimentaConta(req, res) {
-    let conta = {   
-        saldo: req.body.valor,      
+async function movimentaConta(req, res) {
+    let conta = {
+        saldo: req.body.valor,
     }
-
+    let valor = conta.saldo
+    let idUnico = req.params.idUnico
+    
+    console.log(idUnico)
+    const contaPrimaria = await Conta.findByPk(idUnico);
+    //console.log(produto);
+    console.log(contaPrimaria)
     Conta.update(
         conta,
         {

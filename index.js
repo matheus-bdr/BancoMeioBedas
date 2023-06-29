@@ -24,7 +24,7 @@ app.use('/', require('./src/routes/usuarioRoutes'));
 app.use('/', require('./src/routes/indexRoutes'));
 app.use('/', require('./src/routes/contaRoutes'));
 app.use('/', require('./src/routes/autenticacaoRoutes'));
-
+app.use(express.static(__dirname + '/public'));
 app.use('/', require('./src/routes/api/usuarioAPIRoutes'));
 
 db.sync(() => console.log(`Banco de dados conectado`));
