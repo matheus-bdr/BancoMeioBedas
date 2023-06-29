@@ -10,29 +10,29 @@ const Conta = database.define('conta', {
     },
     nome: {
         type: Sequelize.STRING,
-        allowNull: false
+        
     },
     dono: {
         type: Sequelize.STRING,
-        allowNull: false
+        
         
     },
     criacao: {
         type: Sequelize.STRING,
-        allowNull: false
+        
     },
     saldo: {
         type: Sequelize.FLOAT,
-        allowNull: false
+        
     },
     contatype: {
         type: Sequelize.STRING,
-        allowNull: false
+       
    
     },
     senha:{
         type: Sequelize.STRING,
-        allowNull: false
+        
     },
 /*     operacao:{
         type: Sequelize.STRING,

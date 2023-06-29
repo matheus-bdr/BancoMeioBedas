@@ -84,12 +84,8 @@ function movimentaContaView(req, res) {
 }
 
 function movimentaConta(req, res) {
-    let conta = {
-        nome: req.body.nome,
-        valor: req.body.valor,
-        operacao: req.body.operacao,
-        destinatarioTransferencia: req.body.destinatarioTransferencia,
-        senha: req.body.senha
+    let conta = {   
+        saldo: req.body.valor,      
     }
 
     Conta.update(
@@ -105,7 +101,6 @@ function movimentaConta(req, res) {
         .catch(function (erro) {
             res.render("../views/conta/movimentacoes.html", { conta, erro })
         });
-
 
 }
 function excluirConta(req, res) {

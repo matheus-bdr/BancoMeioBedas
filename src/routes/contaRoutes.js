@@ -9,10 +9,10 @@ router.post('/conta/criar', autenticacaoController.verificarAutenticacao, contaC
 
 router.get('/conta/listar', autenticacaoController.verificarAutenticacao, contaController.listarContaView);
 
-router.get('/conta/editar/:id', autenticacaoController.verificarAutenticacao, contaController.editarContaView);
+router.get('/conta/editar/:idUnico', autenticacaoController.verificarAutenticacao, contaController.editarContaView);
 router.post('/conta/editar', autenticacaoController.verificarAutenticacao, contaController.editarConta);
 
-router.get('/conta/movimentacoes/:id', autenticacaoController.verificarAutenticacao,  contaController.movimentaContaView);
+router.get('/conta/movimentacoes/:idUnico', autenticacaoController.verificarAutenticacao,  contaController.movimentaContaView);
 router.post('/conta/movimentacoes', autenticacaoController.verificarAutenticacao, contaController.movimentaConta);
 
 router.post('/conta/excluir', autenticacaoController.verificarAutenticacao, contaController.excluirConta);
