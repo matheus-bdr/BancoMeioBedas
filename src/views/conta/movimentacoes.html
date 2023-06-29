@@ -121,12 +121,12 @@
       </div>
   </nav>
   </header>
-  {{#conta}}
+  {{#sucesso}}
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 <strong>{{conta.result}}</strong> movimentação feita com sucesso!
             </div>
-        {{/conta}}
+        {{/sucesso}}
 
         {{#erro}}
             <div class="alert alert-danger alert-dismissible">
@@ -186,9 +186,12 @@
         </div>
         <div class="d-grid m-5">
           <button type="submit" class="btn buttonCor btn-block "><strong>Enviar</strong></button>
+          <p id="valorMenorQzero"></p>
         </div>
       </form>
     </div>
+    
+    
   </main>
   <footer>
     <!-- place footer here -->

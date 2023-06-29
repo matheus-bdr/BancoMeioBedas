@@ -102,20 +102,21 @@ async function movimentaConta(req, res) {
     console.log(valor);console.log(saldo);console.log(operacao)
     console.log("__________________________")
     //&& contaMovimenta.senha==senha
+    
 if (contaMovimenta.operacao == "Transferir" && valor > 0 && valor < saldo) {
         saldo = saldo - valor
         conta.saldo = saldo
-       // res.redirect('/conta/listar')
+       res.redirect('/conta/listar')
    }
     else if (contaMovimenta.operacao == "Investir" && valor > 0 && valor < saldo) {
         saldo = saldo - valor
         conta.saldo = saldo
-       // res.redirect('/conta/listar')
+       res.redirect('/conta/listar')
     }
     else if (contaMovimenta.operacao == "Depositar" && valor > 0) {
         saldo = Number(saldo) + Number(valor)
         conta.saldo = saldo
-        //res.redirect('/conta/listar')
+        res.redirect('/conta/listar')
     } 
     console.log(valor);console.log(saldo);console.log(operacao);console.log(conta)
     
